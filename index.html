@@ -6,11 +6,13 @@
   <title>GEEKED RADIO</title>
   <meta name="description" content="GEEKED RADIO – music, links, and more." />
   <link rel="icon" href="LogoLogo.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600..900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@600..900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root{
       --bg:#0b0b0d; --panel:#111114; --text:#f2f2f2; --muted:#a0a0a8;
       --accent:#ff2e2e; --accent2:#ff6a6a; --border:#2a2a32;
+      --orange:#ff8c00;
       --radius:8px; --radius-sm:6px;
     }
     *{box-sizing:border-box}
@@ -28,21 +30,49 @@
     a{color:inherit;text-decoration:none}
     .wrap{max-width:1100px;margin:0 auto;padding:24px}
 
-    /* Header */
-    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(60,0,0,.9),rgba(60,0,0,.6) 70%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
-    .nav{display:flex;align-items:center;gap:16px;padding:14px 24px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.06em;font-size:22px}
-    .brand img{height:28px;width:auto;display:block}
+    /* Header (white bar with big logo & gothic brand) */
+    header{
+      position:sticky; top:0; z-index:50;
+      background:#ffffff;
+      border-bottom:1px solid #e6e6ea;
+    }
+    .nav{
+      display:flex; align-items:flex-end; gap:16px;
+      padding:8px 24px 0 24px; /* tighter top so bottom aligns */
+      min-height:110px;       /* tall header so logo can be big */
+    }
+    .brand{
+      display:flex; align-items:flex-end; gap:12px;
+    }
+    .brand img{
+      height:90px; width:auto; display:block;
+      margin:0; /* bottom of image meets header bottom */
+    }
+    .brand .title{
+      font-family:'UnifrakturMaguntia', serif;
+      font-size:34px; line-height:1; color:#000; /* black text */
+      letter-spacing:.02em;
+      transform: translateY(2px); /* micro align with logo bottom */
+      white-space:nowrap;
+    }
 
-    /* Tabs (CSS radios) */
-    .tabs{display:flex;gap:8px;flex-wrap:wrap}
-    .tab label{display:inline-block;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);background:#141418;cursor:pointer;font-weight:700}
-    .tab label:hover{border-color:var(--accent)}
+    /* Tabs (black pills with orange text) */
+    .tabs{display:flex; gap:8px; flex-wrap:wrap; margin-left:auto; padding-bottom:10px}
+    .tab label{
+      display:inline-block; padding:10px 14px;
+      border:1px solid #000; background:#000; color:var(--orange);
+      border-radius:var(--radius-sm); cursor:pointer; font-weight:800;
+      letter-spacing:.04em;
+    }
+    .tab label:hover{outline:2px solid var(--orange); outline-offset:1px}
     html[data-tab="home"]  label[for="tab-home"],
     html[data-tab="links"] label[for="tab-links"],
     html[data-tab="games"] label[for="tab-games"],
     html[data-tab="clothes"] label[for="tab-clothes"],
-    html[data-tab="nlm"]   label[for="tab-nlm"]{border-color:var(--accent);box-shadow:0 0 0 2px rgba(255,46,46,.25) inset}
+    html[data-tab="nlm"]   label[for="tab-nlm"]{
+      box-shadow:0 0 0 2px var(--orange) inset;
+      border-color:var(--orange);
+    }
 
     main{padding:24px}
     .section{display:none;animation:fade .25s ease}
@@ -63,24 +93,29 @@
     .link-list{display:grid;gap:10px}
     .link{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);background:#17171b}
     .link:hover{border-color:var(--accent)}
-    footer{padding:40px 24px 80px;color:var(--muted);text-align:center}
 
-    @media (max-width:600px){h1{font-size:32px}}
+    footer{padding:40px 24px 80px;color:var(--muted);text-align:center}
+    @media (max-width:600px){
+      h1{font-size:32px}
+      .brand img{height:72px}
+      .brand .title{font-size:28px}
+      .tabs{margin-left:0}
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="nav wrap">
       <div class="brand">
-        <img src="LogoLogo.png" alt="geekedradio logo">GEEKED RADIO
+        <img src="LogoLogo.png" alt="GEEKED RADIO logo">
+        <div class="title">GEEKED RADIO</div>
       </div>
-      <div style="flex:1"></div>
       <nav class="tabs" aria-label="Primary">
         <div class="tab"><label for="tab-home">Home</label></div>
         <div class="tab"><label for="tab-links">Links</label></div>
         <div class="tab"><label for="tab-games">Games</label></div>
         <div class="tab"><label for="tab-clothes">Clothes</label></div>
-        <div class="tab"><label for="tab-nlm">NLM</label></div>
+        <div class="tab"><label for="tab-nlm">NLM/DISCORD</label></div>
       </nav>
     </div>
   </header>
@@ -121,7 +156,7 @@
             </div>
           </div>
 
-          <!-- Image section -->
+          <!-- Image panel -->
           <div class="panel">
             <h2>Poster</h2>
             <img src="GeekedLogo.png" alt="GEEKED RADIO artwork" style="width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:var(--radius-sm)">
@@ -186,10 +221,10 @@
       </div>
     </section>
 
-    <!-- NLM -->
+    <!-- NLM / DISCORD -->
     <section id="nlm" class="section">
       <div class="panel">
-        <h2>NLM</h2>
+        <h2>NLM / Discord</h2>
         <div class="link-list" style="margin-top:10px;">
           <a class="link" href="https://instagram.com/nlmx3" target="_blank" rel="noopener noreferrer"><span>@nlmx3</span><small>Instagram</small></a>
           <a class="link" href="https://discord.gg/wZkZJdek3y" target="_blank" rel="noopener noreferrer"><span>NLM Discord</span><small>join</small></a>
