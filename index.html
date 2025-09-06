@@ -12,8 +12,8 @@
     :root{
       --bg:#f6c200; /* school bus yellow, less saturated */
       --panel:#111114;
-      --text:#000; /* switched to black */
-      --muted:#000; /* switched to black */
+      --text:#000; /* main text now black */
+      --muted:#000; /* muted text now black */
       --accent:#ff2e2e;
       --accent2:#ff6a6a;
       --border:#2a2a32;
@@ -100,7 +100,7 @@
     h1{font-size:40px; margin:0 0 8px}
     h2{font-size:20px; margin:0 0 6px; color:var(--muted); font-weight:800; text-transform:uppercase; letter-spacing:.12em}
     h3{margin:0 0 8px}
-    p{color:#000; line-height:1.6} /* all body text now black */
+    p{color:#000; line-height:1.6} /* all paragraphs now black */
 
     .link-list{display:grid; gap:10px}
     .link{
@@ -148,11 +148,133 @@
       <div class="panel section-frame" style="padding:28px;">
         <h1>Welcome to <span style="background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;">GEEKED RADIO</span></h1>
         <p>Your hub for music, drops, and experiments — PRESENTED BY KILLINGFRANCIS AND FUCKDISTURBED</p>
-        <!-- ... rest of content unchanged ... -->
+        <div class="grid" style="margin-top:18px;">
+          <!-- Latest -->
+          <div class="panel">
+            <h2>Latest</h2>
+            <div class="link-list">
+              <a class="link" href="https://geekedradio.itch.io/church-distortion-vst-killingfrancis" target="_blank" rel="noopener noreferrer">
+                <span class="left">
+                  <img class="thumb" src="Logo2kfdis.png" alt="Church Distortion VST cover">
+                  <strong>CHURCH DISTORTION VST</strong>
+                </span>
+                <small>purchase</small>
+              </a>
+              <a class="link" href="https://distrokid.com/hyperfollow/killingfrancis/jekro" target="_blank" rel="noopener noreferrer">
+                <span class="left">
+                  <img class="thumb" src="pixel_art_large_2.png" alt="JEKRO EP cover">
+                  <strong>JEKRO [EP] - KILLINGFRANCIS</strong>
+                </span>
+                <small>listen</small>
+              </a>
+              <a class="link" href="https://soundcloud.com/geeked-323221039/sets/geeks-volume-1" target="_blank" rel="noopener noreferrer">
+                <span class="left">
+                  <img class="thumb" src="Geekedvol2art.jpg" alt="Geeked Radio Volume 2 cover">
+                  <strong>✮⋆☆ GEEKED RADIO VOLUME 2 ☆⋆✮</strong>
+                </span>
+                <small>SoundCloud</small>
+              </a>
+            </div>
+          </div>
+
+          <!-- Contact Us -->
+          <div class="panel">
+            <h2>Contact Us</h2>
+            <div class="link-list">
+              <a class="link" href="https://instagram.com/killingfrancis" target="_blank" rel="noopener noreferrer"><span class="left"><strong>Instagram</strong></span><span>@killingfrancis</span></a>
+              <a class="link" href="https://instagram.com/fuckdisturbed" target="_blank" rel="noopener noreferrer"><span class="left"><strong>Instagram</strong></span><span>@fuckdisturbed</span></a>
+              <a class="link" href="https://instagram.com/officialgeekedradio" target="_blank" rel="noopener noreferrer"><span class="left"><strong>Instagram</strong></span><span>@officialgeekedradio</span></a>
+              <a class="link" href="mailto:killingfrancis5@gmail.com"><span class="left"><strong>Email</strong></span><span>killingfrancis5@gmail.com</span></a>
+            </div>
+          </div>
+
+          <!-- Image -->
+          <div class="panel" style="padding:0;">
+            <img src="GeekedLogo.png" alt="GEEKED RADIO artwork"
+                 style="width:100%;height:auto;display:block;border:0">
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- other sections unchanged -->
+    <!-- LINKS -->
+    <section id="links" class="section">
+      <div class="grid" style="margin-top:0;">
+        <div class="panel">
+          <h3>@killingfrancis</h3>
+          <div class="link-list">
+            <a class="link" href="https://open.spotify.com/artist/4ZKA5HFbQc7620LCn0YDED" target="_blank" rel="noopener noreferrer"><span class="left"><strong>Spotify</strong></span></a>
+            <a class="link" href="https://music.apple.com/us/artist/killingfrancis/1651173807" target="_blank" rel="noopener noreferrer"><span class="left"><strong>Apple Music</strong></span></a>
+            <a class="link" href="https://soundcloud.com/killingfrancis" target="_blank" rel="noopener noreferrer"><span class="left"><strong>SoundCloud</strong></span></a>
+            <a class="link" href="https://www.youtube.com/@killingfran" target="_blank" rel="noopener noreferrer"><span class="left"><strong>YouTube</strong></span></a>
+            <a class="link" href="https://instagram.com/killingfrancis" target="_blank" rel="noopener noreferrer"><span class="left"><strong>Instagram</strong></span></a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>@fuckdisturbed</h3>
+          <div class="link-list">
+            <a class="link" href="https://open.spotify.com/artist/7FNdNJvWTHyQfyLPL63zKP" target="_blank" rel="noopener noreferrer"><span class="left"><strong>Spotify</strong></span></a>
+            <a class="link" href="https://music.apple.com/us/artist/fuckdisturbed/1703869939" target="_blank" rel="noopener noreferrer"><span class="left"><strong>Apple Music</strong></span></a>
+            <a class="link" href="https://soundcloud.com/fuckdisturbed" target="_blank" rel="noopener noreferrer"><span class="left"><strong>SoundCloud</strong></span></a>
+            <a class="link" href="https://www.youtube.com/channel/UC5j7aoa-U_w40bsxOGgO9EA" target="_blank" rel="noopener noreferrer"><span class="left"><strong>YouTube</strong></span></a>
+            <a class="link" href="https://instagram.com/fuckdisturbed" target="_blank" rel="noopener noreferrer"><span class="left"><strong>Instagram</strong></span></a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>official geekedradio</h3>
+          <div class="link-list">
+            <a class="link" href="https://soundcloud.com/geeked-323221039" target="_blank" rel="noopener noreferrer"><span class="left"><strong>SoundCloud</strong></span></a>
+            <a class="link" href="https://instagram.com/officialgeekedradio" target="_blank" rel="noopener noreferrer"><span class="left"><strong>Instagram</strong></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAMES -->
+    <section id="games" class="section">
+      <div class="panel">
+        <h2>Games</h2>
+        <p>Coming soon.</p>
+      </div>
+    </section>
+
+    <!-- CLOTHES -->
+    <section id="clothes" class="section">
+      <div class="panel">
+        <h2>Clothes</h2>
+        <p>Coming soon.</p>
+      </div>
+    </section>
+
+    <!-- SOUNDS/PLUGINS -->
+    <section id="sounds" class="section">
+      <div class="panel">
+        <h2>Sounds / Plugins</h2>
+        <div class="link-list">
+          <a class="link" href="https://geekedradio.itch.io/church-distortion-vst-killingfrancis" target="_blank" rel="noopener noreferrer">
+            <span class="left">
+              <img class="thumb" src="Logo2kfdis.png" alt="Church Distortion VST cover">
+              <strong>CHURCH DISTORTION VST</strong>
+            </span>
+            <small>purchase</small>
+          </a>
+        </div>
+        <p style="margin-top:12px;">More coming soon…</p>
+      </div>
+    </section>
+
+    <!-- NLM / DISCORD -->
+    <section id="nlm" class="section">
+      <div class="panel">
+        <h2>NLM / Discord</h2>
+        <div class="link-list" style="margin-top:10px;">
+          <a class="link" href="https://instagram.com/nlmx3" target="_blank" rel="noopener noreferrer"><span class="left"><strong>@nlmx3</strong></span></a>
+          <a class="link" href="https://discord.gg/wZkZJdek3y" target="_blank" rel="noopener noreferrer"><span class="left"><strong>NLM Discord</strong></span></a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
