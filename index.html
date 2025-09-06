@@ -36,7 +36,7 @@
     a{color:inherit;text-decoration:none}
     .wrap{max-width:1100px;margin:0 auto;padding:24px}
 
-    /* Header: white with big logo and black gothic brand */
+    /* Header */
     header{
       position:sticky; top:0; z-index:50;
       background:#fff;
@@ -53,10 +53,10 @@
       font-family:"Cinzel Decorative", serif;
       font-size:34px; line-height:1; color:#000;
       letter-spacing:.04em; white-space:nowrap;
-      transform:translateY(-4px);
+      transform:translateY(-12px); /* moved up */
     }
 
-    /* Tabs: black pills with orange text */
+    /* Tabs */
     .tabs{display:flex; gap:8px; flex-wrap:wrap; margin-left:auto; padding-bottom:12px}
     .tab label{
       display:inline-block; padding:10px 14px;
@@ -84,8 +84,13 @@
     #tab-sounds:checked ~ main #sounds,
     #tab-nlm:checked    ~ main #nlm{display:block}
 
-    .panel{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));
-           border:1px solid var(--border); border-radius:var(--radius); padding:18px}
+    .panel{
+      background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px;
+      overflow:hidden; /* fix bottom overlap */
+    }
     .grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
     h1{font-size:40px; margin:0 0 8px}
     h2{font-size:20px; margin:0 0 6px; color:var(--muted); font-weight:800; text-transform:uppercase; letter-spacing:.12em}
@@ -103,7 +108,7 @@
     @media (max-width:600px){
       h1{font-size:32px}
       .brand img{height:80px}
-      .brand .title{font-size:28px; transform:translateY(-2px)}
+      .brand .title{font-size:28px; transform:translateY(-8px)}
       .tabs{margin-left:0}
       .thumb{width:70px;height:70px}
     }
@@ -183,7 +188,7 @@
             </div>
           </div>
 
-          <!-- Image (no panel/heading) -->
+          <!-- Image -->
           <div>
             <img src="GeekedLogo.png" alt="GEEKED RADIO artwork"
                  style="width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:var(--radius-sm)">
@@ -247,7 +252,16 @@
     <section id="sounds" class="section">
       <div class="panel">
         <h2>Sounds / Plugins</h2>
-        <p>Coming soon.</p>
+        <div class="link-list">
+          <a class="link" href="https://geekedradio.itch.io/church-distortion-vst-killingfrancis" target="_blank" rel="noopener noreferrer">
+            <span class="left">
+              <img class="thumb" src="Logo2kfdis.png" alt="Church Distortion VST cover">
+              <strong>CHURCH DISTORTION VST</strong>
+            </span>
+            <small>purchase</small>
+          </a>
+        </div>
+        <p style="margin-top:12px;">More coming soon…</p>
       </div>
     </section>
 
@@ -271,10 +285,7 @@
   </footer>
 
   <script>
-    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Active tab + deep-links
     const tabs=["home","links","games","clothes","sounds","nlm"];
     function setTab(name){
       document.documentElement.setAttribute('data-tab', name);
