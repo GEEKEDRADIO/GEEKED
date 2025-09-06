@@ -18,8 +18,8 @@
       --accent2:#ff6a6a;
       --border:#2a2a32;
       --orange:#ff8c00;
-      --radius:8px;
-      --radius-sm:6px;
+      --radius:0;       /* square corners site-wide */
+      --radius-sm:0;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -53,7 +53,7 @@
       font-family:"Cinzel Decorative", serif;
       font-size:34px; line-height:1; color:#000;
       letter-spacing:.04em; white-space:nowrap;
-      transform:translateY(-12px); /* moved up */
+      transform:translateY(-24px); /* lifted higher */
     }
 
     /* Tabs */
@@ -61,8 +61,7 @@
     .tab label{
       display:inline-block; padding:10px 14px;
       border:1px solid #000; background:#000; color:var(--orange);
-      border-radius:var(--radius-sm); cursor:pointer; font-weight:800;
-      letter-spacing:.04em;
+      border-radius:var(--radius-sm); cursor:pointer; font-weight:800; letter-spacing:.04em;
     }
     .tab label:hover{outline:2px solid var(--orange); outline-offset:1px}
     html[data-tab="home"]  label[for="tab-home"],
@@ -89,7 +88,7 @@
       border:1px solid var(--border);
       border-radius:var(--radius);
       padding:18px;
-      overflow:hidden; /* fix bottom overlap */
+      overflow:hidden;       /* prevent bottom overlap */
     }
     .grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
     h1{font-size:40px; margin:0 0 8px}
@@ -98,17 +97,21 @@
     p{color:#c0c0c8; line-height:1.6}
 
     .link-list{display:grid; gap:10px}
-    .link{display:flex; align-items:center; justify-content:space-between; gap:12px;
-          padding:12px 14px; border:1px solid var(--border); border-radius:var(--radius-sm); background:#17171b}
+    .link{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:12px 14px; border:1px solid var(--border);
+      border-radius:var(--radius-sm); background:#17171b;
+    }
     .link:hover{border-color:var(--accent)}
     .left{display:flex; align-items:center; gap:12px}
-    .thumb{width:76px; height:76px; object-fit:cover; display:block; border:1px solid var(--border); border-radius:6px}
+    .thumb{width:76px; height:76px; object-fit:cover; display:block; border:1px solid var(--border); border-radius:var(--radius-sm)}
 
     footer{padding:40px 24px 80px; color:var(--muted); text-align:center}
+
     @media (max-width:600px){
       h1{font-size:32px}
       .brand img{height:80px}
-      .brand .title{font-size:28px; transform:translateY(-8px)}
+      .brand .title{font-size:28px; transform:translateY(-20px)}
       .tabs{margin-left:0}
       .thumb{width:70px;height:70px}
     }
@@ -189,9 +192,9 @@
           </div>
 
           <!-- Image -->
-          <div>
+          <div class="panel" style="padding:0;">
             <img src="GeekedLogo.png" alt="GEEKED RADIO artwork"
-                 style="width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:var(--radius-sm)">
+                 style="width:100%;height:auto;display:block;border:0">
           </div>
         </div>
       </div>
