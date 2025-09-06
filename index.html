@@ -53,7 +53,7 @@
       font-family:"Cinzel Decorative", serif;
       font-size:34px; line-height:1; color:#000;
       letter-spacing:.04em; white-space:nowrap;
-      transform:translateY(-24px); /* lifted higher */
+      transform:translateY(-32px); /* lifted higher */
     }
 
     /* Tabs */
@@ -88,7 +88,12 @@
       border:1px solid var(--border);
       border-radius:var(--radius);
       padding:18px;
-      overflow:hidden;       /* prevent bottom overlap */
+    }
+    .section-frame{
+      border:0 !important;
+      background:transparent !important;
+      box-shadow:none !important;
+      overflow:visible !important;
     }
     .grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
     h1{font-size:40px; margin:0 0 8px}
@@ -111,7 +116,7 @@
     @media (max-width:600px){
       h1{font-size:32px}
       .brand img{height:80px}
-      .brand .title{font-size:28px; transform:translateY(-20px)}
+      .brand .title{font-size:28px; transform:translateY(-28px)}
       .tabs{margin-left:0}
       .thumb{width:70px;height:70px}
     }
@@ -146,7 +151,7 @@
   <main class="wrap">
     <!-- HOME -->
     <section id="home" class="section">
-      <div class="panel" style="padding:28px;">
+      <div class="panel section-frame" style="padding:28px;">
         <h1>Welcome to <span style="background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;">GEEKED RADIO</span></h1>
         <p>Your hub for music, drops, and experiments — PRESENTED BY KILLINGFRANCIS AND FUCKDISTURBED</p>
         <div class="grid" style="margin-top:18px;">
