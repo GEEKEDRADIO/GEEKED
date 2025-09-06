@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>geekedradio</title>
+  <meta name="description" content="geekedradio – music, links, and more." />
+  <style>
+    :root {
+      --bg: #0b0b0d;
+      --panel: #121216;
+      --text: #f2f2f2;
+      --muted: #a0a0a8;
+      --accent: #7c5cff;
+      --accent-2: #18c2ff;
+      --border: #23232a;
+      --ok: #36d399;
+      --warn: #fbbf24;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 80% -20%, rgba(124,92,255,.15), transparent),
+                  radial-gradient(1000px 600px at -10% 20%, rgba(24,194,255,.12), transparent),
+                  var(--bg);
+      color: var(--text);
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
+
+    /* Header */
+    header { position: sticky; top: 0; z-index: 50; background: linear-gradient(180deg, rgba(11,11,13,.9), rgba(11,11,13,.65) 70%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--border);
+    }
+    .nav { display: flex; align-items: center; gap: 16px; padding: 14px 24px; }
+    .brand { font-weight: 800; letter-spacing: .5px; font-size: 20px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .spacer { flex: 1; }
+    .tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tab-btn { padding: 10px 14px; border: 1px solid var(--border); border-radius: 12px; background: #121216; color: var(--text); cursor: pointer; font-weight: 600; }
+    .tab-btn.active { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(124,92,255,.25) inset; }
+
+    /* Content */
+    main { padding: 24px; }
+    .section { display: none; animation: fade .25s ease; }
+    .section.active { display: block; }
+    @keyframes fade { from { opacity: 0; transform: translateY(6px);} to { opacity: 1; transform: none; } }
+
+    .panel { background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)); border: 1px solid var(--border); border-radius: 16px; padding: 18px; }
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+    h1 { font-size: 40px; margin: 0 0 8px; letter-spacing: .5px; }
+    h2 { font-size: 20px; margin: 0 0 6px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .12em; }
+    p { color: #d9d9df; line-height: 1.6; }
+
+    /* Accordion / nested for Find Us */
+    .accordion { display: grid; gap: 12px; }
+    .acc-item { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: var(--panel); }
+    .acc-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; cursor: pointer; font-weight: 700; }
+    .acc-head:hover { background: #16161c; }
+    .acc-body { display: none; padding: 12px 16px 16px; border-top: 1px solid var(--border); }
+    .acc-item.open .acc-body { display: block; }
+    .badge { font-size: 12px; color: var(--muted); border: 1px solid var(--border); padding: 4px 8px; border-radius: 999px; }
+
+    .link-list { display: grid; gap: 10px; }
+    .link { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; background: #141419; }
+    .link:hover { border-color: var(--accent); }
+    .link small { color: var(--muted); }
+
+    footer { padding: 40px 24px 80px; color: var(--muted); text-align: center; }
+    .note { font-size: 13px; color: var(--muted); }
+
+    /* Mobile tweaks */
+    @media (max-width: 600px) {
+      h1 { font-size: 32px; }
+      .nav { padding: 12px 16px; }
+      .tab-btn { padding: 9px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav wrap">
+      <div class="brand">geekedradio</div>
+      <div class="spacer"></div>
+      <nav class="tabs" aria-label="Primary">
+        <button class="tab-btn active" data-tab="home">Home</button>
+        <button class="tab-btn" data-tab="findus">Find Us</button>
+        <button class="tab-btn" data-tab="music">Music</button>
+        <button class="tab-btn" data-tab="games">Games</button>
+        <button class="tab-btn" data-tab="clothes">Clothes</button>
+        <button class="tab-btn" data-tab="other">Other Links</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HOME -->
+    <section id="home" class="section active">
+      <div class="panel" style="padding:28px;">
+        <h1>Welcome to <span style="background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;">geekedradio</span></h1>
+        <p>Your hub for music, drops, and experiments. Use the tabs above to find us, hear our work, and peek at what's coming next.</p>
+        <div class="grid" style="margin-top:18px;">
+          <div class="panel">
+            <h2>Latest</h2>
+            <p class="note">Add updates here (new single, plugin, or show). You can edit this text right in <code>index.html</code>.</p>
+          </div>
+          <div class="panel">
+            <h2>Quick Links</h2>
+            <div class="link-list">
+              <a class="link" href="#" data-tab-jump="music"><span>Go to Music</span><small>stream & follow</small></a>
+              <a class="link" href="#" data-tab-jump="findus"><span>Contact</span><small>DM / email</small></a>
+              <a class="link" href="https://instagram.com/geekedradio" target="_blank" rel="noopener"><span>@geekedradio</span><small>Instagram</small></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FIND US -->
+    <section id="findus" class="section">
+      <div class="grid">
+        <div class="panel">
+          <h2>Find Us</h2>
+          <p>Choose a profile to reveal contact details.</p>
+          <div class="accordion" id="contact-accordion">
+            <!-- killingfrancis -->
+            <div class="acc-item">
+              <div class="acc-head" data-acc>
+                <span>@killingfrancis</span>
+                <span class="badge">tap to expand</span>
+              </div>
+              <div class="acc-body">
+                <div class="link-list">
+                  <!-- Replace placeholders with your real info/links -->
+                  <div class="link"><span>Email</span><small>killingfrancis@example.com</small></div>
+                  <a class="link" href="https://instagram.com/killingfrancis" target="_blank" rel="noopener"><span>Instagram</span><small>@killingfrancis</small></a>
+                  <a class="link" href="https://soundcloud.com/" target="_blank" rel="noopener"><span>SoundCloud</span><small>profile</small></a>
+                  <a class="link" href="https://open.spotify.com/" target="_blank" rel="noopener"><span>Spotify for Artists</span><small>profile</small></a>
+                </div>
+              </div>
+            </div>
+            <!-- fuckdisturbed -->
+            <div class="acc-item">
+              <div class="acc-head" data-acc>
+                <span>@fuckdisturbed</span>
+                <span class="badge">tap to expand</span>
+              </div>
+              <div class="acc-body">
+                <div class="link-list">
+                  <div class="link"><span>Email</span><small>fuckdisturbed@example.com</small></div>
+                  <a class="link" href="https://instagram.com/fuckdisturbed" target="_blank" rel="noopener"><span>Instagram</span><small>@fuckdisturbed</small></a>
+                  <a class="link" href="https://soundcloud.com/" target="_blank" rel="noopener"><span>SoundCloud</span><small>profile</small></a>
+                  <a class="link" href="https://open.spotify.com/" target="_blank" rel="noopener"><span>Spotify</span><small>artist page</small></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Notes</h2>
+          <p class="note">Edit the placeholders above with real emails/links. You can add more fields (e.g., Twitter, TikTok) by duplicating a <code>.link</code> row.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MUSIC -->
+    <section id="music" class="section">
+      <div class="panel">
+        <h2>Music</h2>
+        <p>Three hubs: @killingfrancis, @fuckdisturbed, and the official <strong>geeked</strong> page. Add your platform links below.</p>
+      </div>
+
+      <div class="grid" style="margin-top:16px;">
+        <!-- killingfrancis music -->
+        <div class="panel">
+          <h3 style="margin-top:0;">@killingfrancis</h3>
+          <div class="link-list">
+            <a class="link" href="#" target="_blank" rel="noopener"><span>Spotify</span><small>artist</small></a>
+            <a class="link" href="#" target="_blank" rel="noopener"><span>Apple Music</span><small>artist</small></a>
+            <a class="link" href="#" target="_blank" rel="noopener"><span>SoundCloud</span><small>profile</small></a>
+            <a class="link" href="#" target="_blank" rel="noopener"><span>YouTube</span><small>channel</small></a>
+            <a class="link" href="https://instagram.com/killingfrancis" target="_blank" rel="noopener"><span>Instagram</span><small>@killingfrancis</small></a>
+          </div>
+        </div>
+
+        <!-- fuckdisturbed music -->
+        <div class="panel">
+          <h3 style="margin-top:0;">@fuckdisturbed</h3>
+          <div class="link-list">
+            <a class="link" href="#" target="_blank" rel="noopener"><span>Spotify</span><small>artist</small></a>
+            <a class="link" href="#" target="_blank" rel="noopener"><span>Apple Music</span><small>artist</small></a>
+            <a class="link" href="#" target="_blank" rel="noopener"><span>SoundCloud</span><small>profile</small></a>
+            <a class="link" href="#" target="_blank" rel="noopener"><span>YouTube</span><small>channel</small></a>
+            <a class="link" href="https://instagram.com/fuckdisturbed" target="_blank" rel="noopener"><span>Instagram</span><small>@fuckdisturbed</small></a>
+          </div>
+        </div>
+
+        <!-- geeked official -->
+        <div class="panel">
+          <h3 style="margin-top:0;">official geeked</h3>
+          <div class="link-list">
+            <a class="link" href="#" target="_blank" rel="noopener"><span>Spotify</span><small>playlist or artist</small></a>
+            <a class="link" href="#" target="_blank" rel="noopener"><span>Apple Music</span><small>profile</small></a>
+            <a class="link" href="#" target="_blank" rel="noopener"><span>SoundCloud</span><small>profile</small></a>
+            <a class="link" href="#" target="_blank" rel="noopener"><span>YouTube</span><small>channel</small></a>
+            <a class="link" href="https://instagram.com/geekedradio" target="_blank" rel="noopener"><span>Instagram</span><small>@geekedradio</small></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAMES -->
+    <section id="games" class="section">
+      <div class="panel">
+        <h2>Games</h2>
+        <p>Coming soon.</p>
+      </div>
+    </section>
+
+    <!-- CLOTHES -->
+    <section id="clothes" class="section">
+      <div class="panel">
+        <h2>Clothes</h2>
+        <p>Coming soon.</p>
+      </div>
+    </section>
+
+    <!-- OTHER LINKS -->
+    <section id="other" class="section">
+      <div class="panel">
+        <h2>Other Links</h2>
+        <div class="link-list" style="margin-top:10px;">
+          <a class="link" href="https://instagram.com/nlmx3" target="_blank" rel="noopener"><span>@nlmx3</span><small>Instagram</small></a>
+        </div>
+        <p style="margin-top:12px;">Coming soon.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>© <span id="year"></span> geekedradio</div>
+      <div class="note">Hosted on GitHub Pages. Edit this file to update content.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Tab routing
+    const tabs = document.querySelectorAll('.tab-btn');
+    const sections = document.querySelectorAll('.section');
+    function activateTab(name){
+      tabs.forEach(t=>t.classList.toggle('active', t.dataset.tab===name));
+      sections.forEach(s=>s.classList.toggle('active', s.id===name));
+      history.replaceState(null, '', '#'+name);
+    }
+    tabs.forEach(t=>t.addEventListener('click',()=>activateTab(t.dataset.tab)));
+
+    // Deep link support
+    const start = location.hash?.replace('#','');
+    if(start && document.getElementById(start)) activateTab(start);
+
+    // Quick-jump links
+    document.querySelectorAll('[data-tab-jump]').forEach(a=>{
+      a.addEventListener('click', (e)=>{ e.preventDefault(); activateTab(a.dataset.tabJump); });
+    });
+
+    // Accordion behavior
+    document.querySelectorAll('[data-acc]').forEach(head=>{
+      head.addEventListener('click', ()=>{
+        const item = head.closest('.acc-item');
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
