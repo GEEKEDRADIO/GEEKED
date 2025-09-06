@@ -6,38 +6,55 @@
   <title>geekedradio</title>
   <meta name="description" content="geekedradio – music, links, and more." />
   <link rel="icon" href="LogoLogo.png" type="image/png" />
+  <!-- Fonts: clear body + moody headers -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600..900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b0b0d;--panel:#121216;--text:#f2f2f2;--muted:#a0a0a8;--accent:#7c5cff;--accent2:#18c2ff;--border:#23232a
+      --bg:#0b0b0d;          /* page background */
+      --panel:#111114;       /* card background */
+      --text:#f2f2f2;        /* primary text */
+      --muted:#a0a0a8;       /* secondary text */
+      --accent:#ff2e2e;      /* red accent (primary) */
+      --accent2:#ff6a6a;     /* red accent (secondary) */
+      --border:#2a2a32;      /* subtle borders */
+      --radius:8px;          /* tighter corners */
+      --radius-sm:6px;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:
-      radial-gradient(1200px 800px at 80% -20%, rgba(124,92,255,.15), transparent),
-      radial-gradient(1000px 600px at -10% 20%, rgba(24,194,255,.12), transparent),var(--bg);color:var(--text)}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(1200px 800px at 80% -20%, rgba(255,230,0,.18), transparent),
+        radial-gradient(1000px 600px at -10% 20%, rgba(255,200,0,.12), transparent),
+        var(--bg);
+      color:var(--text);
+    }
+    h1,h2,h3{font-family:Cinzel, serif; letter-spacing:.02em}
     a{color:inherit;text-decoration:none}
     .wrap{max-width:1100px;margin:0 auto;padding:24px}
 
     /* Header */
-    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(11,11,13,.9),rgba(11,11,13,.65) 70%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
+    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(60,0,0,.9),rgba(60,0,0,.6) 70%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
     .nav{display:flex;align-items:center;gap:16px;padding:14px 24px}
     .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px;font-size:20px}
     .brand img{height:28px;width:auto;display:block}
 
     /* Tabs (CSS-only using radios) */
     .tabs{display:flex;gap:8px;flex-wrap:wrap}
-    .tab label{display:inline-block;padding:10px 14px;border:1px solid var(--border);border-radius:12px;background:#121216;cursor:pointer;font-weight:600}
-    /* Visual active state using attribute selectors on the HTML element */
+    .tab label{display:inline-block;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);background:#141418;cursor:pointer;font-weight:600}
+    .tab label:hover{border-color:var(--accent)}
     html[data-tab="home"]  label[for="tab-home"],
     html[data-tab="findus"]label[for="tab-findus"],
     html[data-tab="music"] label[for="tab-music"],
     html[data-tab="games"] label[for="tab-games"],
     html[data-tab="clothes"] label[for="tab-clothes"],
-    html[data-tab="other"] label[for="tab-other"]{border-color:var(--accent);box-shadow:0 0 0 2px rgba(124,92,255,.25) inset}
+    html[data-tab="other"] label[for="tab-other"]{border-color:var(--accent); box-shadow:0 0 0 2px rgba(255,46,46,.25) inset}
 
     main{padding:24px}
     .section{display:none;animation:fade .25s ease}
     @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-    /* Show selected section when corresponding radio checked */
     #tab-home:checked    ~ main #home,
     #tab-findus:checked  ~ main #findus,
     #tab-music:checked   ~ main #music,
@@ -45,23 +62,23 @@
     #tab-clothes:checked ~ main #clothes,
     #tab-other:checked   ~ main #other{display:block}
 
-    .panel{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));border:1px solid var(--border);border-radius:16px;padding:18px}
+    .panel{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));border:1px solid var(--border);border-radius:var(--radius);padding:18px}
     .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    h1{font-size:40px;margin:0 0 8px;letter-spacing:.5px}
-    h2{font-size:20px;margin:0 0 6px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.12em}
+    h1{font-size:40px;margin:0 0 8px}
+    h2{font-size:20px;margin:0 0 6px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.12em}
     h3{margin:0 0 8px}
     p{color:#d9d9df;line-height:1.6}
 
     /* Find Us accordion (details/summary) */
-    details{border:1px solid var(--border);border-radius:14px;background:var(--panel)}
+    details{border:1px solid var(--border);border-radius:var(--radius);background:var(--panel)}
     details+details{margin-top:12px}
-    summary{list-style:none;padding:14px 16px;cursor:pointer;font-weight:700}
+    summary{list-style:none;padding:14px 16px;cursor:pointer;font-weight:800}
     summary::-webkit-details-marker{display:none}
     details[open]{border-color:var(--accent)}
     .acc-body{padding:0 16px 16px;border-top:1px solid var(--border)}
 
     .link-list{display:grid;gap:10px}
-    .link{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:#141419}
+    .link{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);background:#17171b}
     .link:hover{border-color:var(--accent)}
     .note{font-size:13px;color:var(--muted)}
 
@@ -88,7 +105,7 @@
     </div>
   </header>
 
-  <!-- Radio controls MUST be siblings of <main> for the CSS to work -->
+  <!-- Radio controls as siblings of <main> for CSS targeting -->
   <input id="tab-home"    name="tabs" type="radio" checked hidden>
   <input id="tab-findus"  name="tabs" type="radio" hidden>
   <input id="tab-music"   name="tabs" type="radio" hidden>
@@ -105,7 +122,17 @@
         <div class="grid" style="margin-top:18px;">
           <div class="panel">
             <h2>Latest</h2>
-            <p class="note">Add updates here (new single, plugin, or show). Edit this text in <code>index.html</code>.</p>
+            <div class="link-list">
+              <a class="link" href="https://geekedradio.itch.io/church-distortion-vst-killingfrancis" target="_blank" rel="noopener noreferrer"><span>CHURCH DISTORTION VST</span><small>itch.io</small></a>
+              <a class="link" href="https://distrokid.com/hyperfollow/killingfrancis/jekro" target="_blank" rel="noopener noreferrer"><span>JEKRO [EP] - KILLINGFRANCIS</span><small>listen</small></a>
+              <a class="link" href="https://discord.gg/wZkZJdek3y" target="_blank" rel="noopener noreferrer"><span>NLM Discord</span><small>join</small></a>
+            </div>
+          </div>
+          <div class="panel">
+            <h2>✮⋆☆ GEEKED RADIO VOLUME 2 ☆⋆✮</h2>
+            <div class="link-list">
+              <a class="link" href="https://soundcloud.com/geeked-323221039/sets/geeks-volume-1" target="_blank" rel="noopener noreferrer"><span>Play the set</span><small>SoundCloud</small></a>
+            </div>
           </div>
           <div class="panel">
             <h2>Quick Links</h2>
@@ -134,6 +161,7 @@
                 <a class="link" href="https://open.spotify.com/artist/4ZKA5HFbQc7620LCn0YDED" target="_blank" rel="noopener noreferrer"><span>Spotify</span><small>artist</small></a>
                 <a class="link" href="https://music.apple.com/us/artist/killingfrancis/1651173807" target="_blank" rel="noopener noreferrer"><span>Apple Music</span><small>artist</small></a>
                 <a class="link" href="https://www.youtube.com/@killingfran" target="_blank" rel="noopener noreferrer"><span>YouTube</span><small>channel</small></a>
+                <a class="link" href="mailto:killingfrancis5@gmail.com"><span>Email</span><small>killingfrancis5@gmail.com</small></a>
               </div>
             </div>
           </details>
@@ -159,7 +187,6 @@
         <h2>Music</h2>
         <p>Explore @killingfrancis, @fuckdisturbed, and official geekedradio pages below.</p>
       </div>
-
       <div class="grid" style="margin-top:16px;">
         <div class="panel">
           <h3>@killingfrancis</h3>
@@ -171,7 +198,6 @@
             <a class="link" href="https://instagram.com/killingfrancis" target="_blank" rel="noopener noreferrer"><span>Instagram</span><small>@killingfrancis</small></a>
           </div>
         </div>
-
         <div class="panel">
           <h3>@fuckdisturbed</h3>
           <div class="link-list">
@@ -182,7 +208,6 @@
             <a class="link" href="https://instagram.com/fuckdisturbed" target="_blank" rel="noopener noreferrer"><span>Instagram</span><small>@fuckdisturbed</small></a>
           </div>
         </div>
-
         <div class="panel">
           <h3>official geekedradio</h3>
           <div class="link-list">
@@ -229,27 +254,22 @@
   </footer>
 
   <script>
-    // keep year fresh
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // update html[data-tab] for visual active state + allow deep links (#music, etc.)
-    const radios = [
-      'home','findus','music','games','clothes','other'
-    ];
+    // Manage active tab visual + deep-linking
+    const radios=["home","findus","music","games","clothes","other"];
     function setTab(name){
       document.documentElement.setAttribute('data-tab', name);
-      const input = document.getElementById('tab-' + name);
-      if (input) input.checked = true;
-      if (history.replaceState) history.replaceState(null, '', '#' + name);
+      const input=document.getElementById('tab-'+name);
+      if(input) input.checked=true;
+      if(history.replaceState) history.replaceState(null,'','#'+name);
     }
-    // Init from hash
-    const start = (location.hash||'').replace('#','');
-    setTab(radios.includes(start)? start : 'home');
-
-    // clicking labels changes radios automatically; watch for changes to sync data-tab
-    radios.forEach(n => {
-      const input = document.getElementById('tab-' + n);
-      input.addEventListener('change', () => setTab(n));
+    const start=(location.hash||'').replace('#','');
+    setTab(radios.includes(start)?start:'home');
+    radios.forEach(n=>{
+      const input=document.getElementById('tab-'+n);
+      input.addEventListener('change',()=>setTab(n));
     });
   </script>
 </body>
