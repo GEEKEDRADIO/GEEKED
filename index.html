@@ -3,22 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>geekedradio</title>
-  <meta name="description" content="geekedradio – music, links, and more." />
+  <title>GEEKED RADIO</title>
+  <meta name="description" content="GEEKED RADIO – music, links, and more." />
   <link rel="icon" href="LogoLogo.png" type="image/png" />
-  <!-- Fonts: clear body + moody headers -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600..900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b0b0d;          /* page background */
-      --panel:#111114;       /* card background */
-      --text:#f2f2f2;        /* primary text */
-      --muted:#a0a0a8;       /* secondary text */
-      --accent:#ff2e2e;      /* red accent (primary) */
-      --accent2:#ff6a6a;     /* red accent (secondary) */
-      --border:#2a2a32;      /* subtle borders */
-      --radius:8px;          /* tighter corners */
-      --radius-sm:6px;
+      --bg:#0b0b0d; --panel:#111114; --text:#f2f2f2; --muted:#a0a0a8;
+      --accent:#ff2e2e; --accent2:#ff6a6a; --border:#2a2a32;
+      --radius:8px; --radius-sm:6px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -38,50 +31,38 @@
     /* Header */
     header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(60,0,0,.9),rgba(60,0,0,.6) 70%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
     .nav{display:flex;align-items:center;gap:16px;padding:14px 24px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px;font-size:20px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.06em;font-size:22px}
     .brand img{height:28px;width:auto;display:block}
 
-    /* Tabs (CSS-only using radios) */
+    /* Tabs (CSS radios) */
     .tabs{display:flex;gap:8px;flex-wrap:wrap}
-    .tab label{display:inline-block;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);background:#141418;cursor:pointer;font-weight:600}
+    .tab label{display:inline-block;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);background:#141418;cursor:pointer;font-weight:700}
     .tab label:hover{border-color:var(--accent)}
     html[data-tab="home"]  label[for="tab-home"],
-    html[data-tab="findus"]label[for="tab-findus"],
-    html[data-tab="music"] label[for="tab-music"],
+    html[data-tab="links"] label[for="tab-links"],
     html[data-tab="games"] label[for="tab-games"],
     html[data-tab="clothes"] label[for="tab-clothes"],
-    html[data-tab="other"] label[for="tab-other"]{border-color:var(--accent); box-shadow:0 0 0 2px rgba(255,46,46,.25) inset}
+    html[data-tab="nlm"]   label[for="tab-nlm"]{border-color:var(--accent);box-shadow:0 0 0 2px rgba(255,46,46,.25) inset}
 
     main{padding:24px}
     .section{display:none;animation:fade .25s ease}
     @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-    #tab-home:checked    ~ main #home,
-    #tab-findus:checked  ~ main #findus,
-    #tab-music:checked   ~ main #music,
-    #tab-games:checked   ~ main #games,
+    #tab-home:checked  ~ main #home,
+    #tab-links:checked ~ main #links,
+    #tab-games:checked ~ main #games,
     #tab-clothes:checked ~ main #clothes,
-    #tab-other:checked   ~ main #other{display:block}
+    #tab-nlm:checked   ~ main #nlm{display:block}
 
     .panel{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));border:1px solid var(--border);border-radius:var(--radius);padding:18px}
     .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
     h1{font-size:40px;margin:0 0 8px}
-    h2{font-size:20px;margin:0 0 6px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.12em}
+    h2{font-size:20px;margin:0 0 6px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.12em}
     h3{margin:0 0 8px}
     p{color:#d9d9df;line-height:1.6}
-
-    /* Find Us accordion (details/summary) */
-    details{border:1px solid var(--border);border-radius:var(--radius);background:var(--panel)}
-    details+details{margin-top:12px}
-    summary{list-style:none;padding:14px 16px;cursor:pointer;font-weight:800}
-    summary::-webkit-details-marker{display:none}
-    details[open]{border-color:var(--accent)}
-    .acc-body{padding:0 16px 16px;border-top:1px solid var(--border)}
 
     .link-list{display:grid;gap:10px}
     .link{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);background:#17171b}
     .link:hover{border-color:var(--accent)}
-    .note{font-size:13px;color:var(--muted)}
-
     footer{padding:40px 24px 80px;color:var(--muted);text-align:center}
 
     @media (max-width:600px){h1{font-size:32px}}
@@ -91,102 +72,71 @@
   <header>
     <div class="nav wrap">
       <div class="brand">
-        <img src="LogoLogo.png" alt="geekedradio logo">geekedradio
+        <img src="LogoLogo.png" alt="geekedradio logo">GEEKED RADIO
       </div>
       <div style="flex:1"></div>
       <nav class="tabs" aria-label="Primary">
         <div class="tab"><label for="tab-home">Home</label></div>
-        <div class="tab"><label for="tab-findus">Find Us</label></div>
-        <div class="tab"><label for="tab-music">Music</label></div>
+        <div class="tab"><label for="tab-links">Links</label></div>
         <div class="tab"><label for="tab-games">Games</label></div>
         <div class="tab"><label for="tab-clothes">Clothes</label></div>
-        <div class="tab"><label for="tab-other">Other Links</label></div>
+        <div class="tab"><label for="tab-nlm">NLM</label></div>
       </nav>
     </div>
   </header>
 
-  <!-- Radio controls as siblings of <main> for CSS targeting -->
-  <input id="tab-home"    name="tabs" type="radio" checked hidden>
-  <input id="tab-findus"  name="tabs" type="radio" hidden>
-  <input id="tab-music"   name="tabs" type="radio" hidden>
-  <input id="tab-games"   name="tabs" type="radio" hidden>
+  <!-- Radio controls -->
+  <input id="tab-home"  name="tabs" type="radio" checked hidden>
+  <input id="tab-links" name="tabs" type="radio" hidden>
+  <input id="tab-games" name="tabs" type="radio" hidden>
   <input id="tab-clothes" name="tabs" type="radio" hidden>
-  <input id="tab-other"   name="tabs" type="radio" hidden>
+  <input id="tab-nlm"   name="tabs" type="radio" hidden>
 
   <main class="wrap">
     <!-- HOME -->
     <section id="home" class="section">
       <div class="panel" style="padding:28px;">
-        <h1>Welcome to <span style="background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;">geekedradio</span></h1>
-        <p>Your hub for music, drops, and experiments. Use the tabs above to find us, hear our work, and peek at what's coming next.</p>
+        <h1>Welcome to <span style="background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;">GEEKED RADIO</span></h1>
+        <p>Your hub for music, drops, and experiments.</p>
         <div class="grid" style="margin-top:18px;">
+          <!-- Latest -->
           <div class="panel">
             <h2>Latest</h2>
             <div class="link-list">
               <a class="link" href="https://geekedradio.itch.io/church-distortion-vst-killingfrancis" target="_blank" rel="noopener noreferrer"><span>CHURCH DISTORTION VST</span><small>itch.io</small></a>
               <a class="link" href="https://distrokid.com/hyperfollow/killingfrancis/jekro" target="_blank" rel="noopener noreferrer"><span>JEKRO [EP] - KILLINGFRANCIS</span><small>listen</small></a>
+              <a class="link" href="https://soundcloud.com/geeked-323221039/sets/geeks-volume-1" target="_blank" rel="noopener noreferrer"><span>✮⋆☆ GEEKED RADIO VOLUME 2 ☆⋆✮</span><small>SoundCloud</small></a>
               <a class="link" href="https://discord.gg/wZkZJdek3y" target="_blank" rel="noopener noreferrer"><span>NLM Discord</span><small>join</small></a>
             </div>
           </div>
+
+          <!-- Contact Us -->
           <div class="panel">
-            <h2>✮⋆☆ GEEKED RADIO VOLUME 2 ☆⋆✮</h2>
+            <h2>Contact Us</h2>
             <div class="link-list">
-              <a class="link" href="https://soundcloud.com/geeked-323221039/sets/geeks-volume-1" target="_blank" rel="noopener noreferrer"><span>Play the set</span><small>SoundCloud</small></a>
+              <a class="link" href="https://instagram.com/killingfrancis" target="_blank" rel="noopener noreferrer"><span>Instagram</span><small>@killingfrancis</small></a>
+              <a class="link" href="https://instagram.com/fuckdisturbed" target="_blank" rel="noopener noreferrer"><span>Instagram</span><small>@fuckdisturbed</small></a>
+              <a class="link" href="https://instagram.com/officialgeekedradio" target="_blank" rel="noopener noreferrer"><span>Instagram</span><small>@officialgeekedradio</small></a>
+              <a class="link" href="mailto:killingfrancis5@gmail.com"><span>Email</span><small>killingfrancis5@gmail.com</small></a>
             </div>
           </div>
+
+          <!-- Image section -->
           <div class="panel">
-            <h2>Quick Links</h2>
-            <div class="link-list">
-              <label class="link" for="tab-music" style="cursor:pointer"><span>Go to Music</span><small>stream & follow</small></label>
-              <label class="link" for="tab-findus" style="cursor:pointer"><span>Contact</span><small>DM / email</small></label>
-              <a class="link" href="https://instagram.com/officialgeekedradio" target="_blank" rel="noopener noreferrer"><span>@officialgeekedradio</span><small>Instagram</small></a>
-            </div>
+            <h2>Poster</h2>
+            <img src="GeekedLogo.png" alt="GEEKED RADIO artwork" style="width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:var(--radius-sm)">
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FIND US -->
-    <section id="findus" class="section">
-      <div class="grid">
-        <div class="panel">
-          <h2>Find Us</h2>
-          <p>Choose a profile to reveal contact details.</p>
-          <details>
-            <summary>@killingfrancis</summary>
-            <div class="acc-body">
-              <div class="link-list">
-                <a class="link" href="https://instagram.com/killingfrancis" target="_blank" rel="noopener noreferrer"><span>Instagram</span><small>@killingfrancis</small></a>
-                <a class="link" href="https://soundcloud.com/killingfrancis" target="_blank" rel="noopener noreferrer"><span>SoundCloud</span><small>profile</small></a>
-                <a class="link" href="https://open.spotify.com/artist/4ZKA5HFbQc7620LCn0YDED" target="_blank" rel="noopener noreferrer"><span>Spotify</span><small>artist</small></a>
-                <a class="link" href="https://music.apple.com/us/artist/killingfrancis/1651173807" target="_blank" rel="noopener noreferrer"><span>Apple Music</span><small>artist</small></a>
-                <a class="link" href="https://www.youtube.com/@killingfran" target="_blank" rel="noopener noreferrer"><span>YouTube</span><small>channel</small></a>
-                <a class="link" href="mailto:killingfrancis5@gmail.com"><span>Email</span><small>killingfrancis5@gmail.com</small></a>
-              </div>
-            </div>
-          </details>
-          <details>
-            <summary>@fuckdisturbed</summary>
-            <div class="acc-body">
-              <div class="link-list">
-                <a class="link" href="https://instagram.com/fuckdisturbed" target="_blank" rel="noopener noreferrer"><span>Instagram</span><small>@fuckdisturbed</small></a>
-                <a class="link" href="https://soundcloud.com/fuckdisturbed" target="_blank" rel="noopener noreferrer"><span>SoundCloud</span><small>profile</small></a>
-                <a class="link" href="https://open.spotify.com/artist/7FNdNJvWTHyQfyLPL63zKP" target="_blank" rel="noopener noreferrer"><span>Spotify</span><small>artist</small></a>
-                <a class="link" href="https://music.apple.com/us/artist/fuckdisturbed/1703869939" target="_blank" rel="noopener noreferrer"><span>Apple Music</span><small>artist</small></a>
-                <a class="link" href="https://www.youtube.com/channel/UC5j7aoa-U_w40bsxOGgO9EA" target="_blank" rel="noopener noreferrer"><span>YouTube</span><small>channel</small></a>
-              </div>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- MUSIC -->
-    <section id="music" class="section">
+    <!-- LINKS -->
+    <section id="links" class="section">
       <div class="panel">
-        <h2>Music</h2>
-        <p>Explore @killingfrancis, @fuckdisturbed, and official geekedradio pages below.</p>
+        <h2>Links</h2>
+        <p>All platforms for the crews.</p>
       </div>
+
       <div class="grid" style="margin-top:16px;">
         <div class="panel">
           <h3>@killingfrancis</h3>
@@ -198,6 +148,7 @@
             <a class="link" href="https://instagram.com/killingfrancis" target="_blank" rel="noopener noreferrer"><span>Instagram</span><small>@killingfrancis</small></a>
           </div>
         </div>
+
         <div class="panel">
           <h3>@fuckdisturbed</h3>
           <div class="link-list">
@@ -208,6 +159,7 @@
             <a class="link" href="https://instagram.com/fuckdisturbed" target="_blank" rel="noopener noreferrer"><span>Instagram</span><small>@fuckdisturbed</small></a>
           </div>
         </div>
+
         <div class="panel">
           <h3>official geekedradio</h3>
           <div class="link-list">
@@ -234,21 +186,21 @@
       </div>
     </section>
 
-    <!-- OTHER LINKS -->
-    <section id="other" class="section">
+    <!-- NLM -->
+    <section id="nlm" class="section">
       <div class="panel">
-        <h2>Other Links</h2>
+        <h2>NLM</h2>
         <div class="link-list" style="margin-top:10px;">
           <a class="link" href="https://instagram.com/nlmx3" target="_blank" rel="noopener noreferrer"><span>@nlmx3</span><small>Instagram</small></a>
+          <a class="link" href="https://discord.gg/wZkZJdek3y" target="_blank" rel="noopener noreferrer"><span>NLM Discord</span><small>join</small></a>
         </div>
-        <p style="margin-top:12px;">Coming soon.</p>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="wrap">
-      <div>© <span id="year"></span> geekedradio</div>
+      <div>© <span id="year"></span> GEEKED RADIO</div>
       <div class="note">Hosted on GitHub Pages. Edit this file to update content.</div>
     </div>
   </footer>
@@ -257,8 +209,8 @@
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Manage active tab visual + deep-linking
-    const radios=["home","findus","music","games","clothes","other"];
+    // Active tab + deep-links
+    const tabs=["home","links","games","clothes","nlm"];
     function setTab(name){
       document.documentElement.setAttribute('data-tab', name);
       const input=document.getElementById('tab-'+name);
@@ -266,8 +218,8 @@
       if(history.replaceState) history.replaceState(null,'','#'+name);
     }
     const start=(location.hash||'').replace('#','');
-    setTab(radios.includes(start)?start:'home');
-    radios.forEach(n=>{
+    setTab(tabs.includes(start)?start:'home');
+    tabs.forEach(n=>{
       const input=document.getElementById('tab-'+n);
       input.addEventListener('change',()=>setTab(n));
     });
