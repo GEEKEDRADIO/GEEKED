@@ -7,57 +7,58 @@
   <meta name="description" content="GEEKED RADIO – music, links, and more." />
   <link rel="icon" href="LogoLogo.png" type="image/png" />
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@600..900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b0b0d; --panel:#111114; --text:#f2f2f2; --muted:#a0a0a8;
-      --accent:#ff2e2e; --accent2:#ff6a6a; --border:#2a2a32;
+      --bg:#0b0b0d;
+      --panel:#111114;
+      --text:#f2f2f2;
+      --muted:#7e7e87;         /* darker than before */
+      --accent:#ff2e2e;
+      --accent2:#ff6a6a;
+      --border:#2a2a32;
       --orange:#ff8c00;
-      --radius:8px; --radius-sm:6px;
+      --radius:8px;
+      --radius-sm:6px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
       font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      /* brighter background glow */
       background:
-        radial-gradient(1200px 800px at 80% -20%, rgba(255,230,0,.18), transparent),
-        radial-gradient(1000px 600px at -10% 20%, rgba(255,200,0,.12), transparent),
+        radial-gradient(1200px 800px at 80% -20%, rgba(255,242,0,.30), transparent),
+        radial-gradient(1000px 600px at -10% 20%, rgba(255,210,0,.22), transparent),
         var(--bg);
       color:var(--text);
     }
-    h1,h2,h3{font-family:Cinzel, serif; letter-spacing:.02em}
+    h1,h2,h3{font-family:"Cinzel Decorative", serif; letter-spacing:.02em}
     a{color:inherit;text-decoration:none}
     .wrap{max-width:1100px;margin:0 auto;padding:24px}
 
-    /* Header (white bar with big logo & gothic brand) */
+    /* Header: white with big logo and black gothic brand */
     header{
       position:sticky; top:0; z-index:50;
-      background:#ffffff;
+      background:#fff;
       border-bottom:1px solid #e6e6ea;
     }
     .nav{
       display:flex; align-items:flex-end; gap:16px;
-      padding:8px 24px 0 24px; /* tighter top so bottom aligns */
-      min-height:110px;       /* tall header so logo can be big */
+      padding:8px 24px 0 24px;
+      min-height:120px;
     }
-    .brand{
-      display:flex; align-items:flex-end; gap:12px;
-    }
-    .brand img{
-      height:90px; width:auto; display:block;
-      margin:0; /* bottom of image meets header bottom */
-    }
+    .brand{display:flex; align-items:flex-end; gap:12px}
+    .brand img{height:96px; width:auto; display:block}
     .brand .title{
-      font-family:'UnifrakturMaguntia', serif;
-      font-size:34px; line-height:1; color:#000; /* black text */
-      letter-spacing:.02em;
-      transform: translateY(2px); /* micro align with logo bottom */
-      white-space:nowrap;
+      font-family:"Cinzel Decorative", serif;
+      font-size:34px; line-height:1; color:#000;
+      letter-spacing:.04em; white-space:nowrap;
+      transform:translateY(-4px); /* raise title a bit */
     }
 
-    /* Tabs (black pills with orange text) */
-    .tabs{display:flex; gap:8px; flex-wrap:wrap; margin-left:auto; padding-bottom:10px}
+    /* Tabs: black pills with orange text */
+    .tabs{display:flex; gap:8px; flex-wrap:wrap; margin-left:auto; padding-bottom:12px}
     .tab label{
       display:inline-block; padding:10px 14px;
       border:1px solid #000; background:#000; color:var(--orange);
@@ -70,8 +71,7 @@
     html[data-tab="games"] label[for="tab-games"],
     html[data-tab="clothes"] label[for="tab-clothes"],
     html[data-tab="nlm"]   label[for="tab-nlm"]{
-      box-shadow:0 0 0 2px var(--orange) inset;
-      border-color:var(--orange);
+      box-shadow:0 0 0 2px var(--orange) inset; border-color:var(--orange);
     }
 
     main{padding:24px}
@@ -83,22 +83,24 @@
     #tab-clothes:checked ~ main #clothes,
     #tab-nlm:checked   ~ main #nlm{display:block}
 
-    .panel{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));border:1px solid var(--border);border-radius:var(--radius);padding:18px}
-    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    h1{font-size:40px;margin:0 0 8px}
-    h2{font-size:20px;margin:0 0 6px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.12em}
+    .panel{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));
+           border:1px solid var(--border); border-radius:var(--radius); padding:18px}
+    .grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    h1{font-size:40px; margin:0 0 8px}
+    h2{font-size:20px; margin:0 0 6px; color:var(--muted); font-weight:800; text-transform:uppercase; letter-spacing:.12em}
     h3{margin:0 0 8px}
-    p{color:#d9d9df;line-height:1.6}
+    p{color:#c0c0c8; line-height:1.6} /* darker paragraph text */
 
-    .link-list{display:grid;gap:10px}
-    .link{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);background:#17171b}
+    .link-list{display:grid; gap:10px}
+    .link{display:flex; align-items:center; justify-content:space-between; gap:12px;
+          padding:12px 14px; border:1px solid var(--border); border-radius:var(--radius-sm); background:#17171b}
     .link:hover{border-color:var(--accent)}
 
-    footer{padding:40px 24px 80px;color:var(--muted);text-align:center}
+    footer{padding:40px 24px 80px; color:var(--muted); text-align:center}
     @media (max-width:600px){
       h1{font-size:32px}
-      .brand img{height:72px}
-      .brand .title{font-size:28px}
+      .brand img{height:80px}
+      .brand .title{font-size:28px; transform:translateY(-2px)}
       .tabs{margin-left:0}
     }
   </style>
@@ -132,7 +134,7 @@
     <section id="home" class="section">
       <div class="panel" style="padding:28px;">
         <h1>Welcome to <span style="background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;">GEEKED RADIO</span></h1>
-        <p>Your hub for music, drops, and experiments.</p>
+        <p>Your hub for music, drops, and experiments — PRESENTED BY KILLINGFRANCIS AND FUCKDISTURBED</p>
         <div class="grid" style="margin-top:18px;">
           <!-- Latest -->
           <div class="panel">
@@ -141,7 +143,6 @@
               <a class="link" href="https://geekedradio.itch.io/church-distortion-vst-killingfrancis" target="_blank" rel="noopener noreferrer"><span>CHURCH DISTORTION VST</span><small>itch.io</small></a>
               <a class="link" href="https://distrokid.com/hyperfollow/killingfrancis/jekro" target="_blank" rel="noopener noreferrer"><span>JEKRO [EP] - KILLINGFRANCIS</span><small>listen</small></a>
               <a class="link" href="https://soundcloud.com/geeked-323221039/sets/geeks-volume-1" target="_blank" rel="noopener noreferrer"><span>✮⋆☆ GEEKED RADIO VOLUME 2 ☆⋆✮</span><small>SoundCloud</small></a>
-              <a class="link" href="https://discord.gg/wZkZJdek3y" target="_blank" rel="noopener noreferrer"><span>NLM Discord</span><small>join</small></a>
             </div>
           </div>
 
@@ -156,10 +157,10 @@
             </div>
           </div>
 
-          <!-- Image panel -->
-          <div class="panel">
-            <h2>Poster</h2>
-            <img src="GeekedLogo.png" alt="GEEKED RADIO artwork" style="width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:var(--radius-sm)">
+          <!-- Image (no panel/heading) -->
+          <div>
+            <img src="GeekedLogo.png" alt="GEEKED RADIO artwork"
+                 style="width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:var(--radius-sm)">
           </div>
         </div>
       </div>
@@ -167,12 +168,7 @@
 
     <!-- LINKS -->
     <section id="links" class="section">
-      <div class="panel">
-        <h2>Links</h2>
-        <p>All platforms for the crews.</p>
-      </div>
-
-      <div class="grid" style="margin-top:16px;">
+      <div class="grid" style="margin-top:0;">
         <div class="panel">
           <h3>@killingfrancis</h3>
           <div class="link-list">
