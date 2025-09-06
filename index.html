@@ -50,6 +50,7 @@
 
     h1 { font-size: 40px; margin: 0 0 8px; letter-spacing: .5px; }
     h2 { font-size: 20px; margin: 0 0 6px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .12em; }
+    h3 { margin: 0 0 8px; }
     p { color: #d9d9df; line-height: 1.6; }
 
     /* Accordion */
@@ -85,19 +86,19 @@
       </div>
       <div class="spacer"></div>
       <nav class="tabs" aria-label="Primary">
-        <button class="tab-btn active" data-tab="home">Home</button>
-        <button class="tab-btn" data-tab="findus">Find Us</button>
-        <button class="tab-btn" data-tab="music">Music</button>
-        <button class="tab-btn" data-tab="games">Games</button>
-        <button class="tab-btn" data-tab="clothes">Clothes</button>
-        <button class="tab-btn" data-tab="other">Other Links</button>
+        <button class="tab-btn active" data-tab="home" type="button">Home</button>
+        <button class="tab-btn" data-tab="findus" type="button">Find Us</button>
+        <button class="tab-btn" data-tab="music" type="button">Music</button>
+        <button class="tab-btn" data-tab="games" type="button">Games</button>
+        <button class="tab-btn" data-tab="clothes" type="button">Clothes</button>
+        <button class="tab-btn" data-tab="other" type="button">Other Links</button>
       </nav>
     </div>
   </header>
 
   <main class="wrap">
     <!-- HOME -->
-    <section id="home" class="section active">
+    <section id="home" class="section active" aria-labelledby="tab-home">
       <div class="panel" style="padding:28px;">
         <h1>Welcome to <span style="background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;">geekedradio</span></h1>
         <p>Your hub for music, drops, and experiments. Use the tabs above to find us, hear our work, and peek at what's coming next.</p>
@@ -119,7 +120,7 @@
     </section>
 
     <!-- FIND US -->
-    <section id="findus" class="section">
+    <section id="findus" class="section" aria-labelledby="tab-findus">
       <div class="grid">
         <div class="panel">
           <h2>Find Us</h2>
@@ -163,7 +164,7 @@
     </section>
 
     <!-- MUSIC -->
-    <section id="music" class="section">
+    <section id="music" class="section" aria-labelledby="tab-music">
       <div class="panel">
         <h2>Music</h2>
         <p>Explore @killingfrancis, @fuckdisturbed, and official geekedradio pages below.</p>
@@ -172,7 +173,7 @@
       <div class="grid" style="margin-top:16px;">
         <!-- killingfrancis music -->
         <div class="panel">
-          <h3 style="margin-top:0;">@killingfrancis</h3>
+          <h3>@killingfrancis</h3>
           <div class="link-list">
             <a class="link" href="https://open.spotify.com/artist/4ZKA5HFbQc7620LCn0YDED" target="_blank" rel="noopener noreferrer"><span>Spotify</span><small>artist</small></a>
             <a class="link" href="https://music.apple.com/us/artist/killingfrancis/1651173807" target="_blank" rel="noopener noreferrer"><span>Apple Music</span><small>artist</small></a>
@@ -184,7 +185,7 @@
 
         <!-- fuckdisturbed music -->
         <div class="panel">
-          <h3 style="margin-top:0;">@fuckdisturbed</h3>
+          <h3>@fuckdisturbed</h3>
           <div class="link-list">
             <a class="link" href="https://open.spotify.com/artist/7FNdNJvWTHyQfyLPL63zKP" target="_blank" rel="noopener noreferrer"><span>Spotify</span><small>artist</small></a>
             <a class="link" href="https://music.apple.com/us/artist/fuckdisturbed/1703869939" target="_blank" rel="noopener noreferrer"><span>Apple Music</span><small>artist</small></a>
@@ -196,7 +197,7 @@
 
         <!-- geeked official -->
         <div class="panel">
-          <h3 style="margin-top:0;">official geekedradio</h3>
+          <h3>official geekedradio</h3>
           <div class="link-list">
             <a class="link" href="https://soundcloud.com/geeked-323221039" target="_blank" rel="noopener noreferrer"><span>SoundCloud</span><small>profile</small></a>
             <a class="link" href="https://instagram.com/officialgeekedradio" target="_blank" rel="noopener noreferrer"><span>Instagram</span><small>@officialgeekedradio</small></a>
@@ -206,7 +207,7 @@
     </section>
 
     <!-- GAMES -->
-    <section id="games" class="section">
+    <section id="games" class="section" aria-labelledby="tab-games">
       <div class="panel">
         <h2>Games</h2>
         <p>Coming soon.</p>
@@ -214,7 +215,7 @@
     </section>
 
     <!-- CLOTHES -->
-    <section id="clothes" class="section">
+    <section id="clothes" class="section" aria-labelledby="tab-clothes">
       <div class="panel">
         <h2>Clothes</h2>
         <p>Coming soon.</p>
@@ -222,7 +223,7 @@
     </section>
 
     <!-- OTHER LINKS -->
-    <section id="other" class="section">
+    <section id="other" class="section" aria-labelledby="tab-other">
       <div class="panel">
         <h2>Other Links</h2>
         <div class="link-list" style="margin-top:10px;">
@@ -241,12 +242,47 @@
   </footer>
 
   <script>
-    // Year
+    // Footer Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Tab routing
+    // Tab routing logic
     const tabs = document.querySelectorAll('.tab-btn');
     const sections = document.querySelectorAll('.section');
+
     function activateTab(name){
-      tabs.forEach(t=>t.classList.toggle('active', t.dataset.tab===name));
-      sections.forEach(s=>s.classList
+      tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+      sections.forEach(s => s.classList.toggle('active', s.id === name));
+      // keep URL in sync
+      if (history.replaceState) {
+        history.replaceState(null, '', '#' + name);
+      }
+    }
+
+    tabs.forEach(t => {
+      t.addEventListener('click', () => activateTab(t.dataset.tab));
+    });
+
+    // Deep link support on load
+    const startHash = (location.hash || '').replace('#', '');
+    if (startHash && document.getElementById(startHash)) {
+      activateTab(startHash);
+    }
+
+    // Quick-jump links (on Home)
+    document.querySelectorAll('[data-tab-jump]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        activateTab(a.dataset.tabJump);
+      });
+    });
+
+    // Accordion behavior for Find Us
+    document.querySelectorAll('[data-acc]').forEach(head => {
+      head.addEventListener('click', () => {
+        const item = head.closest('.acc-item');
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
