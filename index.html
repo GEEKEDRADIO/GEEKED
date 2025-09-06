@@ -12,8 +12,8 @@
     :root{
       --bg:#f6c200; /* school bus yellow, less saturated */
       --panel:#111114;
-      --text:#000; /* main text now black */
-      --muted:#000; /* muted text now black */
+      --text:#000;
+      --muted:#000;
       --accent:#ff2e2e;
       --accent2:#ff6a6a;
       --border:#2a2a32;
@@ -100,7 +100,7 @@
     h1{font-size:40px; margin:0 0 8px}
     h2{font-size:20px; margin:0 0 6px; color:var(--muted); font-weight:800; text-transform:uppercase; letter-spacing:.12em}
     h3{margin:0 0 8px}
-    p{color:#000; line-height:1.6} /* all paragraphs now black */
+    p{color:#000; line-height:1.6}
 
     .link-list{display:grid; gap:10px}
     .link{
@@ -188,8 +188,8 @@
             </div>
           </div>
 
-          <!-- Image -->
-          <div class="panel" style="padding:0;">
+          <!-- Image (no panel, no border) -->
+          <div style="padding:0; border:0; background:transparent;">
             <img src="GeekedLogo.png" alt="GEEKED RADIO artwork"
                  style="width:100%;height:auto;display:block;border:0">
           </div>
