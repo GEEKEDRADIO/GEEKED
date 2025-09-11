@@ -114,6 +114,74 @@
 
     footer{padding:40px 24px 80px; color:#000; text-align:center}
     .note{color:#000}
+
+    /* ===================== MOBILE-ONLY FIXES ===================== */
+    @media (max-width: 640px) {
+      html, body { overflow-x: hidden; }
+
+      .wrap { padding: 16px; }
+
+      /* Header stacks and shrinks cleanly */
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 10px 16px 8px 16px;
+        min-height: unset;
+      }
+      .brand { align-items: center; gap: 10px; }
+      .brand img { height: 64px; }
+      .brand .title {
+        font-size: 26px;
+        line-height: 1.1;
+        white-space: normal;   /* allow wrapping on small screens */
+        transform: none;       /* remove upward shift that can clip on mobile */
+      }
+
+      /* Tabs: wrap nicely, bigger tap targets */
+      .tabs {
+        margin-left: 0;
+        width: 100%;
+        padding-bottom: 8px;
+        gap: 8px;
+      }
+      .tab label {
+        width: calc(50% - 4px);   /* 2 columns on small phones */
+        text-align: center;
+        padding: 12px 10px;
+      }
+      @media (max-width: 380px) {
+        .tab label { width: 100%; } /* stack to 1 column on very small screens */
+      }
+
+      main { padding: 16px; }
+
+      /* Stack grid to single column */
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      /* Make link items comfy and non-cramped */
+      .link {
+        padding: 12px;
+        gap: 10px;
+      }
+      .thumb { width: 64px; height: 64px; }
+
+      /* Typography scales for readability */
+      h1 { font-size: clamp(24px, 7vw, 32px); line-height: 1.15; }
+      h2 { font-size: clamp(14px, 3.6vw, 18px); }
+      h3 { font-size: clamp(16px, 4vw, 20px); }
+      p  { font-size: clamp(14px, 4vw, 16px); }
+
+      /* Panels breathe on mobile */
+      .panel { padding: 16px; }
+
+      /* Prevent fixed heights from causing cutoffs (none used, but safe) */
+      header, footer, .section, .panel { height: auto; min-height: 0; }
+    }
+    /* =================== END MOBILE-ONLY FIXES =================== */
   </style>
 </head>
 <body>
